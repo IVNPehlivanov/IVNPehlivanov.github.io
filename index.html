@@ -108,8 +108,21 @@
   .award-title { font-size: 15px; color: var(--muted); font-weight: 600; margin: 32px 0 8px; text-transform: uppercase; letter-spacing: 0.6px; }
   .award { margin: 0; }
   main { padding-bottom: 48px; }
-  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
-  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+  .site-footer { border-top: 1px solid var(--line); background: rgba(5, 10, 26, 0.55); margin-top: 24px; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; padding: 52px 0 40px; }
+  .foot-name { font-size: 22px; font-weight: 700; margin: 0 0 10px; }
+  .foot-tag { color: var(--muted); margin: 0 0 18px; max-width: 320px; }
+  .foot-mail { font-weight: 600; }
+  .foot-col h4 { margin: 0 0 14px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
+  .foot-col ul { list-style: none; margin: 0; padding: 0; }
+  .foot-col li { margin: 0 0 10px; }
+  .foot-col a { color: var(--text); }
+  .foot-col a:hover { color: var(--gold); text-decoration: none; }
+  .foot-bottom { border-top: 1px solid var(--line); padding: 20px 0 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 14px; }
+  .foot-bottom a { color: var(--muted); }
+  .foot-bottom a:hover { color: var(--text); text-decoration: none; }
+  @media (max-width: 860px) { .foot-grid { grid-template-columns: 1fr 1fr; } .foot-brand { grid-column: 1 / -1; } }
+  @media (max-width: 480px) { .foot-grid { grid-template-columns: 1fr; padding-top: 40px; } }
 
   @media (max-width: 640px) {
     .hero { padding: 48px 0 36px; }
@@ -329,17 +342,61 @@
       <p class="sub">Spoken languages: English (proficient) and Bulgarian (native).</p>
       <div class="skills">
         <div><h3>Programming</h3><p>Java, JavaScript, TypeScript, Python, SQL, C</p></div>
-        <div><h3>Web</h3><p>Next.js, React, Express, Spring Boot, Spring Security, REST, MUI, Tailwind</p></div>
-        <div><h3>Data</h3><p>PostgreSQL, Supabase, Spark, pandas, scikit-learn</p></div>
-        <div><h3>Ops</h3><p>Docker, Microsoft Azure, Coolify, Cloudflare, CI/CD, Git, Bash</p></div>
+        <div><h3>Frontend</h3><p>Next.js (SSR / ISR), React, MUI, Tailwind CSS, Vite, HTML, CSS, Thymeleaf</p></div>
+        <div><h3>Backend</h3><p>Node.js, Express, Spring Boot, Spring Security, FastAPI, REST API design, OAuth2, Keycloak, RabbitMQ, Puppeteer</p></div>
+        <div><h3>Data</h3><p>PostgreSQL, Supabase, data pipelines and ETL, Apache Spark, Delta Lake, Kafka, pandas, scikit-learn</p></div>
+        <div><h3>AI and LLMs</h3><p>Anthropic Claude API, LLM integration, Hugging Face Transformers, Ollama, spaCy</p></div>
+        <div><h3>DevOps and cloud</h3><p>Docker, Linux servers, Coolify, Cloudflare, Microsoft Azure, OpenTofu, Ansible, GitLab CI, CI/CD, Git, Bash</p></div>
+        <div><h3>SEO and analytics</h3><p>Technical SEO, structured data (JSON-LD), Open Graph, Google Search Console, SEMrush, IndexNow, Google AdSense</p></div>
+        <div><h3>Practices</h3><p>Agile / Scrum, OOP and design patterns, MVC, monitoring and incident response, performance tuning</p></div>
       </div>
       <h3 class="award-title">Award</h3>
-      <p class="award">Jury Award winner, Beehive Company Challenge, at the Hack the Future hackathon in Belgium.</p>
+      <p class="award">Jury Award winner, Beehive Company Challenge, at the Hack the Future 2025 hackathon in Belgium.</p>
     </div>
   </section>
 
 </main>
 
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <p class="foot-name">Ivan Pehlivanov</p>
+        <p class="foot-tag">Software engineer building data-driven web products, from the pipeline to the page.</p>
+        <a class="foot-mail" href="mailto:ivnpehlivanov@gmail.com">ivnpehlivanov@gmail.com</a>
+      </div>
+      <div class="foot-col">
+        <h4>Live sites</h4>
+        <ul>
+          <li><a href="https://royaletracker.gg">RoyaleTracker.gg</a></li>
+          <li><a href="https://brawlmetrics.gg">BrawlMetrics.gg</a></li>
+          <li><a href="https://royaledly.com">Royaledly.com</a></li>
+          <li><a href="https://brawldly.com">Brawldly.com</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>On this page</h4>
+        <ul>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#university">University</a></li>
+          <li><a href="#skills">Skills</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Find me</h4>
+        <ul>
+          <li><a href="https://github.com/IVNPehlivanov">GitHub</a></li>
+          <li><a href="mailto:ivnpehlivanov@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Ivan Pehlivanov</span>
+      <a href="#">Back to top &uarr;</a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
