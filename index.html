@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ivan Pehlivanov | Software Engineer</title>
+<meta name="description" content="Ivan Pehlivanov, software engineer. Builder of RoyaleTracker.gg, BrawlMetrics.gg, Royaledly and Brawldly: live game-stats sites with their own battle-data pipelines.">
+<meta property="og:title" content="Ivan Pehlivanov | Software Engineer">
+<meta property="og:description" content="Live game-stats sites with their own battle-data pipelines, plus internal tools for my own marketplace business.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ivnpehlivanov.github.io/">
+<meta property="og:image" content="https://ivnpehlivanov.github.io/img/royaletracker-arena.webp">
+<link rel="canonical" href="https://ivnpehlivanov.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a1128'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' fill='%23fbbf24' text-anchor='middle'%3EIP%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #0a1128;
+    --bg-2: #0f1b3d;
+    --panel: #111c3f;
+    --line: rgba(148, 170, 220, 0.16);
+    --text: #e8edf7;
+    --muted: #a3b0cc;
+    --gold: #fbbf24;
+    --blue: #60a5fa;
+    --green: #4ade80;
+    --radius: 12px;
+    --max: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 35%, var(--bg) 100%);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+  /* Top bar */
+  .top { border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
+  .brand { font-weight: 700; color: var(--text); letter-spacing: 0.2px; }
+  .nav { display: flex; gap: 22px; font-size: 14px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover { color: var(--text); text-decoration: none; }
+  @media (max-width: 640px) { .nav { display: none; } }
+
+  /* Hero */
+  .hero { padding: 72px 0 56px; }
+  .hero h1 { font-size: clamp(34px, 6vw, 52px); line-height: 1.1; margin: 0 0 14px; letter-spacing: -0.5px; }
+  .hero p.lead { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 720px; margin: 0 0 26px; }
+  .hero p.lead strong { color: var(--text); font-weight: 600; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 18px;
+    border-radius: 999px; font-weight: 600; font-size: 15px; border: 1px solid var(--line); color: var(--text);
+  }
+  .btn:hover { text-decoration: none; border-color: rgba(148,170,220,0.4); }
+  .btn.primary { background: var(--gold); color: #1a1300; border-color: var(--gold); }
+  .btn.primary:hover { filter: brightness(1.05); }
+  .btn svg { width: 18px; height: 18px; }
+
+  /* Sections */
+  section { padding: 48px 0; }
+  h2 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.2px; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  h3 { font-size: 22px; margin: 0; }
+
+  /* Project blocks */
+  .project { border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); overflow: hidden; margin-bottom: 28px; }
+  .project-head { padding: 26px 28px 0; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; }
+  .project-head .meta { color: var(--muted); font-size: 14px; }
+  .project-body { padding: 14px 28px 28px; }
+  .project-body > p { margin: 0 0 18px; color: var(--muted); max-width: 820px; }
+  .credit { font-size: 14px; color: var(--muted); margin: 6px 0 0; width: 100%; }
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin: 0 0 22px; }
+  .shots img { width: 100%; height: auto; aspect-ratio: 1200 / 833; object-fit: cover; object-position: top; border-radius: 8px; border: 1px solid var(--line); display: block; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 0 0 22px; }
+  .stat { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  .stat b { display: block; font-size: 24px; color: var(--gold); line-height: 1.2; }
+  .stat span { color: var(--muted); font-size: 13.5px; }
+  ul.points { margin: 0 0 20px; padding-left: 20px; }
+  ul.points li { margin: 0 0 10px; }
+  ul.points li strong { color: var(--text); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 13px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
+  .asof { font-size: 13px; color: var(--muted); margin: -10px 0 22px; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .pair .project { margin: 0; }
+  .pair .project img { width: 100%; height: auto; aspect-ratio: 1200 / 760; object-fit: cover; object-position: top; display: block; border-bottom: 1px solid var(--line); }
+
+  /* Simple rows */
+  .rows { border-top: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: 220px 1fr; gap: 6px 28px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .row .when { color: var(--muted); font-size: 14px; }
+  .row h3 { font-size: 18px; margin: 0 0 6px; }
+  .row p { margin: 0 0 8px; color: var(--muted); }
+  @media (max-width: 720px) { .row { grid-template-columns: 1fr; } }
+
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .skills h3 { font-size: 15px; color: var(--muted); font-weight: 600; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.6px; }
+  .skills p { margin: 0; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 48px 0 36px; }
+    .project-head { padding: 20px 18px 0; }
+    .project-body { padding: 12px 18px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Ivan Pehlivanov</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#university">University</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <h1>Ivan Pehlivanov</h1>
+      <p class="lead">Software engineer. I studied Applied Computer Science at Karel de Grote University in Antwerp. I build and run <strong>live web products</strong>: game-statistics sites backed by their own battle-data pipelines, daily puzzle games, and the internal tools behind my own marketplace business.</p>
+      <div class="links">
+        <a class="btn primary" href="#projects">See the projects</a>
+        <a class="btn" href="https://github.com/IVNPehlivanov">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="mailto:ivnpehlivanov@gmail.com">ivnpehlivanov@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Live projects</h2>
+      <p class="sub">Four sites for Clash Royale and Brawl Stars players, built with my colleague Angel Tonov and self-hosted on our own server.</p>
+
+      <!-- RoyaleTracker -->
+      <article class="project">
+        <div class="project-head">
+          <h3><a href="https://royaletracker.gg">RoyaleTracker.gg</a></h3>
+          <span class="meta">Clash Royale statistics · live since January 2026</span>
+          <p class="credit">Built with Angel Tonov (<a href="https://github.com/thereddragonbg123456-bit">@thereddragonbg123456-bit</a>)</p>
+        </div>
+        <div class="project-body">
+          <p>Player and clan profiles, leaderboards, and the best decks for every arena, card and game mode. Every ranking on the site is computed from our own battle-data pipeline, which polls the official Clash Royale API around the clock.</p>
+          <div class="shots">
+            <img src="img/royaletracker-arena.webp" width="1200" height="833" alt="RoyaleTracker arena deck page with battle counts and the best deck for the arena" loading="lazy">
+            <img src="img/royaletracker-card.webp" width="1200" height="833" alt="RoyaleTracker card page showing the best Hog Rider decks with win rates" loading="lazy">
+            <img src="img/royaletracker-tierlist.webp" width="1200" height="833" alt="RoyaleTracker card tier list ranked by win rate over the last three weeks" loading="lazy">
+          </div>
+          <div class="stats">
+            <div class="stat"><b>887K+</b><span>battles collected per day</span></div>
+            <div class="stat"><b>38M+</b><span>battles stored (45-day window)</span></div>
+            <div class="stat"><b>184</b><span>card pages with live deck rankings</span></div>
+            <div class="stat"><b>300+</b><span>pages in the sitemap</span></div>
+          </div>
+          <p class="asof">Figures measured in October 2026.</p>
+          <ul class="points">
+            <li><strong>A battle pipeline that replaced scraping.</strong> A long-running crawler keeps a pool of active players, polls their battle logs, deduplicates each battle seen from both sides and classifies it by game mode. A nightly job folds raw battles into weekly aggregates, and a separate verifier recomputes every aggregate from the raw table.</li>
+            <li><strong>Rankings that resist noise and abuse.</strong> Decks are ranked by the Wilson score lower bound of their win rate with a battle floor, and the exports filter out trophy-dumping decks and the decks that farm wins off them.</li>
+            <li><strong>Production incidents with lasting fixes:</strong> IP-bound API keys that revoked each other across machines, cached error pages replayed after an outage, and a disk that filled up with Next.js page caches. Each one now has a guard or a monitor.</li>
+            <li><strong>AI deck tools</strong> on the Anthropic Claude API: a deck builder that recommends decks from the cards a player owns, and a deck rater, with daily usage limits counted in PostgreSQL.</li>
+            <li><strong>SEO built into the code:</strong> structured data generated from the same values as the visible page, one canonical URL helper, generated share images and real 404 / 410 responses, all checked by a script.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Next.js 16</span><span class="chip">React 19</span><span class="chip">MUI</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">Coolify</span><span class="chip">Cloudflare</span><span class="chip">Anthropic API</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- BrawlMetrics -->
+      <article class="project">
+        <div class="project-head">
+          <h3><a href="https://brawlmetrics.gg">BrawlMetrics.gg</a></h3>
+          <span class="meta">Brawl Stars statistics · live since July 2026</span>
+          <p class="credit">Built with Angel Tonov</p>
+        </div>
+        <div class="project-body">
+          <p>Player and club profiles, 108 brawler pages, map pages for every mode, tier lists and leaderboards. Its pipeline aggregates battles at ingest: each battle updates per-brawler, matchup, teammate and team-comp counters and is then discarded, which keeps the database small.</p>
+          <div class="shots">
+            <img src="img/brawlmetrics-tierlist.webp" width="1200" height="833" alt="BrawlMetrics brawler tier list with win rates and match counts" loading="lazy">
+            <img src="img/brawlmetrics-home.webp" width="1200" height="833" alt="BrawlMetrics home page with player search and the best brawlers right now" loading="lazy">
+          </div>
+          <div class="stats">
+            <div class="stat"><b>1.45M+</b><span>battles processed per day</span></div>
+            <div class="stat"><b>93M+</b><span>battles counted since August 2026</span></div>
+            <div class="stat"><b>16.7M</b><span>players indexed</span></div>
+            <div class="stat"><b>390+</b><span>pages in the sitemap</span></div>
+          </div>
+          <ul class="points">
+            <li><strong>Adaptive rate limiting:</strong> the poller runs at 30 requests per second, halves its rate on any HTTP 429 and recovers gradually, so it stays close to the API limit without being blocked.</li>
+            <li><strong>Sample-size gates:</strong> below 300 games for a ranking or 100 for a matchup, the API returns "insufficient data" instead of a misleading percentage.</li>
+            <li><strong>Fixing a page type that always failed:</strong> brawler pages took 16 to 18 seconds against a 10-second budget. Single-flight caching and memoisation brought the endpoint to about 1 second.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Next.js 15</span><span class="chip">React 19</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">Coolify</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Games -->
+      <div class="pair">
+        <article class="project">
+          <img src="img/royaledly.webp" width="1200" height="833" alt="Royaledly game hub with eight Clash Royale guessing games" loading="lazy">
+          <div class="project-head">
+            <h3><a href="https://royaledly.com">Royaledly.com</a></h3>
+            <span class="meta">Live since March 2026</span>
+          </div>
+          <div class="project-body">
+            <p>Daily Clash Royale guessing games in the style of Wordle: six daily modes and two endless ones. The daily answer comes from a seeded generator, so everyone gets the same puzzle without storing answers ahead of time, and anonymous community stats show how everyone else did.</p>
+            <div class="chips"><span class="chip">Next.js 16</span><span class="chip">TypeScript</span><span class="chip">Tailwind</span><span class="chip">PostgreSQL</span></div>
+          </div>
+        </article>
+        <article class="project">
+          <img src="img/brawldly.webp" width="1200" height="750" alt="Brawldly game hub with Brawl Stars guessing games" loading="lazy">
+          <div class="project-head">
+            <h3><a href="https://brawldly.com">Brawldly.com</a></h3>
+            <span class="meta">Live since July 2026</span>
+          </div>
+          <div class="project-body">
+            <p>The same idea for Brawl Stars: guess the brawler across eight modes, from classic attribute clues to pixel art, gadgets and hypercharges.</p>
+            <div class="chips"><span class="chip">Next.js</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <p class="sub">Work outside my own products.</p>
+      <div class="rows">
+        <div class="row">
+          <div class="when">Mar 2026 to Jun 2026</div>
+          <div>
+            <h3>Junior Software Engineer (internship), One16 BV, Antwerp</h3>
+            <p>Co-developed a match-scheduling CRM for the volleyball club Volleyball Puurs, replacing planning done in spreadsheets and group chats: Spring Boot services and PostgreSQL models for fixtures, court availability and team constraints, conflict detection that flags clashes before a schedule is published, and an Azure deployment pipeline.</p>
+            <div class="chips"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">PostgreSQL</span><span class="chip">Azure</span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="when">Jun 2025 to present</div>
+          <div>
+            <h3>Founder, digital-goods storefronts on Eldorado.gg and G2G</h3>
+            <p>Run the business end to end: pricing, inventory, supplier coordination and customer support. Built the software behind it with Angel Tonov:</p>
+            <ul class="points">
+              <li><strong>Stock manager:</strong> turns raw stock into finished marketplace listings. It reads game stats from the official APIs, generates and masks screenshots with Puppeteer and sharp, and creates or restocks offers through the Eldorado API.</li>
+              <li><strong>Supplier portal:</strong> suppliers upload stock that is validated and formatted automatically, with Supabase Auth, row-level security on every table, an audited balance ledger and profit dashboards synced from marketplace orders.</li>
+            </ul>
+            <div class="chips"><span class="chip">React</span><span class="chip">Express</span><span class="chip">Supabase</span><span class="chip">Puppeteer</span><span class="chip">OAuth2</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="university">
+    <div class="wrap">
+      <h2>University projects</h2>
+      <p class="sub">Applied Computer Science, Karel de Grote University of Applied Sciences, Antwerp (2023 to 2026).</p>
+      <div class="rows">
+        <div class="row">
+          <div class="when">Team of 5 · Research Department</div>
+          <div>
+            <h3><a href="https://github.com/IVNPehlivanov/EvalEbike">EvalEbike</a></h3>
+            <p>Management system for e-bike test benches, built for the KdG Research Department. I led backend development: Spring Boot REST APIs, role-based security, Docker and the Azure deployment with CI/CD.</p>
+            <div class="chips"><span class="chip">Spring Boot</span><span class="chip">Spring Security</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">Azure</span><span class="chip">OpenTofu</span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="when">Individual project</div>
+          <div>
+            <h3><a href="https://github.com/IVNPehlivanov/RM-backend">Keep Dishes Going</a></h3>
+            <p>Takeaway platform for restaurant owners and customers: draft and publish menus, accept orders, guest checkout and order tracking, with messaging to an external delivery service. <a href="https://github.com/IVNPehlivanov/RM-frontend">Frontend</a> in React and TypeScript.</p>
+            <div class="chips"><span class="chip">Spring Boot</span><span class="chip">RabbitMQ</span><span class="chip">Keycloak</span><span class="chip">React</span><span class="chip">TypeScript</span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="when">Team of 2</div>
+          <div>
+            <h3><a href="https://github.com/IVNPehlivanov/LLM-Sentiment">Aspect-based sentiment analysis</a></h3>
+            <p>Three implementations behind one interface, compared on the same evaluation set: a lexicon model (spaCy and VADER), a fine-tuned DeBERTa transformer, and a local LLM through Ollama.</p>
+            <div class="chips"><span class="chip">Python</span><span class="chip">Transformers</span><span class="chip">spaCy</span><span class="chip">Ollama</span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="when">Team of 3</div>
+          <div>
+            <h3><a href="https://github.com/IVNPehlivanov/ML-Project">Wine quality prediction</a></h3>
+            <p>Classification and regression models on the UCI wine quality data, from exploration and cleaning to a FastAPI service that serves the trained pipeline.</p>
+            <div class="chips"><span class="chip">scikit-learn</span><span class="chip">pandas</span><span class="chip">FastAPI</span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="when">Big Data course</div>
+          <div>
+            <h3><a href="https://github.com/IVNPehlivanov/urban-mobility-data-platform">Urban mobility data platform</a></h3>
+            <p>Star-schema data warehouse for a shared-bike system with slowly changing dimensions, Delta tables and a Kafka stream of ride events.</p>
+            <div class="chips"><span class="chip">PySpark</span><span class="chip">Delta Lake</span><span class="chip">Kafka</span><span class="chip">PostgreSQL</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills and awards</h2>
+      <p class="sub">Jury Award, Beehive Company Challenge, Hack the Future hackathon (Belgium).</p>
+      <div class="skills">
+        <div><h3>Languages</h3><p>Java, JavaScript, TypeScript, Python, SQL, C</p></div>
+        <div><h3>Web</h3><p>Next.js, React, Express, Spring Boot, Spring Security, REST, MUI, Tailwind</p></div>
+        <div><h3>Data</h3><p>PostgreSQL, Supabase, Spark, pandas, scikit-learn</p></div>
+        <div><h3>Ops</h3><p>Docker, Microsoft Azure, Coolify, Cloudflare, CI/CD, Git, Bash</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p class="sub">English and Bulgarian.</p>
+      <div class="links">
+        <a class="btn primary" href="mailto:ivnpehlivanov@gmail.com">Email me</a>
+        <a class="btn" href="https://github.com/IVNPehlivanov">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Ivan Pehlivanov</span>
+    <span>Fan-made sites, not affiliated with Supercell.</span>
+  </div>
+</footer>
+
+</body>
+</html>
