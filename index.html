@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ivan Pehlivanov | Software Engineer</title>
-<meta name="description" content="Ivan Pehlivanov, software engineer. Builder of RoyaleTracker.gg, BrawlMetrics.gg, Royaledly and Brawldly: live game-stats sites with their own battle-data pipelines.">
+<meta name="description" content="Ivan Pehlivanov, software engineer. Builder of RoyaleTracker.gg, BrawlMetrics.gg, Royaledly and Brawldly: production analytics platforms with their own data pipelines.">
 <meta property="og:title" content="Ivan Pehlivanov | Software Engineer">
-<meta property="og:description" content="Live game-stats sites with their own battle-data pipelines, plus internal tools for my own marketplace business.">
+<meta property="og:description" content="Production analytics platforms with their own data pipelines, plus internal tools for my own e-commerce business.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ivnpehlivanov.github.io/">
 <meta property="og:image" content="https://ivnpehlivanov.github.io/img/royaletracker-arena.webp">
@@ -135,7 +135,7 @@
   <div class="hero">
     <div class="wrap">
       <h1>Ivan Pehlivanov</h1>
-      <p class="lead">Software engineer. I studied Applied Computer Science at Karel de Grote University in Antwerp. I build and run <strong>live web products</strong>: game-statistics sites backed by their own battle-data pipelines, daily puzzle games, and the internal tools behind my own marketplace business.</p>
+      <p class="lead">Software engineer. I studied Applied Computer Science at Karel de Grote University in Antwerp. I build and run <strong>live web products</strong>: analytics platforms backed by their own data pipelines, browser games, and the internal tools behind my own e-commerce business.</p>
       <div class="links">
         <a class="btn primary" href="#projects">See the projects</a>
         <a class="btn" href="https://github.com/IVNPehlivanov">
@@ -150,35 +150,35 @@
   <section id="projects">
     <div class="wrap">
       <h2>Live projects</h2>
-      <p class="sub">Four sites for Clash Royale and Brawl Stars players, built with my colleague Angel Tonov and self-hosted on our own server.</p>
+      <p class="sub">Four production web applications for the mobile games Clash Royale and Brawl Stars, built with my colleague Angel Tonov and self-hosted on our own infrastructure.</p>
 
       <!-- RoyaleTracker -->
       <article class="project">
         <div class="project-head">
           <h3><a href="https://royaletracker.gg">RoyaleTracker.gg</a></h3>
-          <span class="meta">Clash Royale statistics · live since January 2026</span>
+          <span class="meta">Analytics platform · in production since January 2026</span>
           <p class="credit">Built with Angel Tonov (<a href="https://github.com/MrFann1">@MrFann1</a>)</p>
         </div>
         <div class="project-body">
-          <p>Player and clan profiles, leaderboards, and the best decks for every arena, card and game mode. Every ranking on the site is computed from our own battle-data pipeline, which polls the official Clash Royale API around the clock.</p>
+          <p>A statistics platform for Clash Royale. A data pipeline ingests match records from the game's official REST API around the clock, and the platform turns them into rankings, leaderboards and user profiles, served as server-rendered pages.</p>
           <div class="shots">
-            <img src="img/royaletracker-arena.webp" width="1200" height="833" alt="RoyaleTracker arena deck page with battle counts and the best deck for the arena" loading="lazy">
-            <img src="img/royaletracker-card.webp" width="1200" height="833" alt="RoyaleTracker card page showing the best Hog Rider decks with win rates" loading="lazy">
-            <img src="img/royaletracker-tierlist.webp" width="1200" height="833" alt="RoyaleTracker card tier list ranked by win rate over the last three weeks" loading="lazy">
+            <img src="img/royaletracker-arena.webp" width="1200" height="833" alt="RoyaleTracker page with live rankings and dataset statistics" loading="lazy">
+            <img src="img/royaletracker-card.webp" width="1200" height="833" alt="RoyaleTracker detail page with ranked results and win rates" loading="lazy">
+            <img src="img/royaletracker-tierlist.webp" width="1200" height="833" alt="RoyaleTracker ranking page generated from three weeks of data" loading="lazy">
           </div>
           <div class="stats">
-            <div class="stat"><b>887K+</b><span>battles collected per day</span></div>
-            <div class="stat"><b>38M+</b><span>battles stored (45-day window)</span></div>
-            <div class="stat"><b>184</b><span>card pages with live deck rankings</span></div>
+            <div class="stat"><b>887K+</b><span>records ingested per day</span></div>
+            <div class="stat"><b>38M+</b><span>records stored (45-day retention)</span></div>
+            <div class="stat"><b>184</b><span>detail pages ranked from live data</span></div>
             <div class="stat"><b>300+</b><span>pages in the sitemap</span></div>
           </div>
           <p class="asof">Figures measured in October 2026.</p>
           <ul class="points">
-            <li><strong>A battle pipeline that replaced scraping.</strong> A long-running crawler keeps a pool of active players, polls their battle logs, deduplicates each battle seen from both sides and classifies it by game mode. A nightly job folds raw battles into weekly aggregates, and a separate verifier recomputes every aggregate from the raw table.</li>
-            <li><strong>Rankings that resist noise and abuse.</strong> Decks are ranked by the Wilson score lower bound of their win rate with a battle floor, and the exports filter out trophy-dumping decks and the decks that farm wins off them.</li>
-            <li><strong>Production incidents with lasting fixes:</strong> IP-bound API keys that revoked each other across machines, cached error pages replayed after an outage, and a disk that filled up with Next.js page caches. Each one now has a guard or a monitor.</li>
-            <li><strong>AI deck tools</strong> on the Anthropic Claude API: a deck builder that recommends decks from the cards a player owns, and a deck rater, with daily usage limits counted in PostgreSQL.</li>
-            <li><strong>SEO built into the code:</strong> structured data generated from the same values as the visible page, one canonical URL helper, generated share images and real 404 / 410 responses, all checked by a script.</li>
+            <li><strong>Data pipeline.</strong> Replaced web scraping with our own ingestion. A long-running worker polls the API for a managed pool of users, deduplicates records that arrive from more than one source and classifies them before storing them in PostgreSQL. A nightly batch job rolls raw records into weekly aggregates that outlive the retention window, and an automated verifier recomputes every aggregate from the raw data.</li>
+            <li><strong>Statistically sound rankings.</strong> Results are ranked by the Wilson score lower bound with a minimum sample size, so a small sample cannot outrank a large one, and anomaly filters remove manipulated data before it reaches the rankings.</li>
+            <li><strong>Reliability.</strong> Each production incident became a permanent safeguard: create-before-revoke rotation for IP-bound API keys, cache bypass after upstream outages, an eviction job after a disk-full outage, request deadlines on slow queries, and a health monitor that reports to Discord.</li>
+            <li><strong>LLM integration.</strong> Two features run on the Anthropic Claude API, a recommendation engine and an automated rater, with per-device and per-network rate limits stored in PostgreSQL.</li>
+            <li><strong>Technical SEO in code.</strong> Structured data generated from the page's own values, a single canonical URL builder, dynamic Open Graph images and correct 404 / 410 responses, verified by an automated audit script.</li>
           </ul>
           <div class="chips">
             <span class="chip">Next.js 16</span><span class="chip">React 19</span><span class="chip">MUI</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">Coolify</span><span class="chip">Cloudflare</span><span class="chip">Anthropic API</span>
@@ -190,25 +190,26 @@
       <article class="project">
         <div class="project-head">
           <h3><a href="https://brawlmetrics.gg">BrawlMetrics.gg</a></h3>
-          <span class="meta">Brawl Stars statistics · live since July 2026</span>
+          <span class="meta">Analytics platform · in production since July 2026</span>
           <p class="credit">Built with Angel Tonov</p>
         </div>
         <div class="project-body">
-          <p>Player and club profiles, 108 brawler pages, map pages for every mode, tier lists and leaderboards. Its pipeline aggregates battles at ingest: each battle updates per-brawler, matchup, teammate and team-comp counters and is then discarded, which keeps the database small.</p>
+          <p>A statistics platform for Brawl Stars with a separate pipeline built for higher volume: each record is aggregated into counters at ingest time and then discarded, which keeps storage small while processing more than 1.4 million records a day.</p>
           <div class="shots">
-            <img src="img/brawlmetrics-tierlist.webp" width="1200" height="833" alt="BrawlMetrics brawler tier list with win rates and match counts" loading="lazy">
-            <img src="img/brawlmetrics-home.webp" width="1200" height="833" alt="BrawlMetrics home page with player search and the best brawlers right now" loading="lazy">
+            <img src="img/brawlmetrics-tierlist.webp" width="1200" height="833" alt="BrawlMetrics ranking table with win rates and sample sizes" loading="lazy">
+            <img src="img/brawlmetrics-home.webp" width="1200" height="833" alt="BrawlMetrics home page with user search" loading="lazy">
           </div>
           <div class="stats">
-            <div class="stat"><b>1.45M+</b><span>battles processed per day</span></div>
-            <div class="stat"><b>93M+</b><span>battles counted since August 2026</span></div>
-            <div class="stat"><b>16.7M</b><span>players indexed</span></div>
+            <div class="stat"><b>1.45M+</b><span>records processed per day</span></div>
+            <div class="stat"><b>93M+</b><span>records aggregated since August 2026</span></div>
+            <div class="stat"><b>16.7M</b><span>user profiles indexed</span></div>
             <div class="stat"><b>390+</b><span>pages in the sitemap</span></div>
           </div>
           <ul class="points">
-            <li><strong>Adaptive rate limiting:</strong> the poller runs at 30 requests per second, halves its rate on any HTTP 429 and recovers gradually, so it stays close to the API limit without being blocked.</li>
-            <li><strong>Sample-size gates:</strong> below 300 games for a ranking or 100 for a matchup, the API returns "insufficient data" instead of a misleading percentage.</li>
-            <li><strong>Fixing a page type that always failed:</strong> brawler pages took 16 to 18 seconds against a 10-second budget. Single-flight caching and memoisation brought the endpoint to about 1 second.</li>
+            <li><strong>Adaptive rate limiting.</strong> The ingestion worker runs at 30 requests per second, halves its rate on any HTTP 429 and recovers gradually, so it stays close to the API limit without being blocked.</li>
+            <li><strong>Single-worker guarantee.</strong> A PostgreSQL advisory lock ensures only one ingestion worker runs at a time, a scheduled watchdog restarts it, and health checks alert when a day ingests no data.</li>
+            <li><strong>Performance.</strong> Cut a failing endpoint from 16 to 18 seconds to about 1 second by removing repeated computation, fixing a cache stampede with single-flight request coalescing and adding memoisation with a tuned TTL.</li>
+            <li><strong>Statistical guardrails.</strong> Results based on fewer than 300 samples (100 for pairwise comparisons) are returned as "insufficient data" instead of a misleading percentage.</li>
           </ul>
           <div class="chips">
             <span class="chip">Next.js 15</span><span class="chip">React 19</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">Coolify</span>
@@ -219,24 +220,24 @@
       <!-- Games -->
       <div class="pair">
         <article class="project">
-          <img src="img/royaledly.webp" width="1200" height="833" alt="Royaledly game hub with eight Clash Royale guessing games" loading="lazy">
+          <img src="img/royaledly.webp" width="1200" height="833" alt="Royaledly game selection screen" loading="lazy">
           <div class="project-head">
             <h3><a href="https://royaledly.com">Royaledly.com</a></h3>
-            <span class="meta">Live since March 2026</span>
+            <span class="meta">Web game · in production since March 2026</span>
           </div>
           <div class="project-body">
-            <p>Daily Clash Royale guessing games in the style of Wordle: six daily modes and two endless ones. The daily answer comes from a seeded generator, so everyone gets the same puzzle without storing answers ahead of time, and anonymous community stats show how everyone else did.</p>
+            <p>A daily puzzle game in the style of Wordle, with eight modes. A seeded random generator gives every user the same puzzle each day without storing answers in advance. Anonymous usage statistics use salted hashes and idempotent writes, so no personal data is kept.</p>
             <div class="chips"><span class="chip">Next.js 16</span><span class="chip">TypeScript</span><span class="chip">Tailwind</span><span class="chip">PostgreSQL</span></div>
           </div>
         </article>
         <article class="project">
-          <img src="img/brawldly.webp" width="1200" height="750" alt="Brawldly game hub with Brawl Stars guessing games" loading="lazy">
+          <img src="img/brawldly.webp" width="1200" height="750" alt="Brawldly game selection screen" loading="lazy">
           <div class="project-head">
             <h3><a href="https://brawldly.com">Brawldly.com</a></h3>
-            <span class="meta">Live since July 2026</span>
+            <span class="meta">Web game · in production since July 2026</span>
           </div>
           <div class="project-body">
-            <p>The same idea for Brawl Stars: guess the brawler across eight modes, from classic attribute clues to pixel art, gadgets and hypercharges.</p>
+            <p>The same daily puzzle platform adapted for a second game, with eight modes.</p>
             <div class="chips"><span class="chip">Next.js</span></div>
           </div>
         </article>
@@ -263,8 +264,8 @@
             <h3>Founder, digital-goods storefronts on Eldorado.gg and G2G</h3>
             <p>Run the business end to end: pricing, inventory, supplier coordination and customer support. Built the software behind it with Angel Tonov:</p>
             <ul class="points">
-              <li><strong>Stock manager:</strong> turns raw stock into finished marketplace listings. It reads game stats from the official APIs, generates and masks screenshots with Puppeteer and sharp, and creates or restocks offers through the Eldorado API.</li>
-              <li><strong>Supplier portal:</strong> suppliers upload stock that is validated and formatted automatically, with Supabase Auth, row-level security on every table, an audited balance ledger and profit dashboards synced from marketplace orders.</li>
+              <li><strong>Stock manager:</strong> turns raw inventory into finished marketplace listings. It enriches each item with data from external REST APIs, generates and redacts product images with Puppeteer and sharp, and creates or restocks listings through the Eldorado API.</li>
+              <li><strong>Supplier portal:</strong> suppliers upload inventory that is validated and formatted automatically, with Supabase Auth, row-level security on every table, an audited balance ledger and profit dashboards synced from marketplace orders.</li>
             </ul>
             <div class="chips"><span class="chip">React</span><span class="chip">Express</span><span class="chip">Supabase</span><span class="chip">Puppeteer</span><span class="chip">OAuth2</span></div>
           </div>
