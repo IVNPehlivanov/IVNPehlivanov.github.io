@@ -6,7 +6,7 @@
 <title>Ivan Pehlivanov | Software Engineer</title>
 <meta name="description" content="Ivan Pehlivanov, software engineer. Builder of RoyaleTracker.gg, BrawlMetrics.gg, Royaledly and Brawldly: production analytics platforms with their own data pipelines, self-hosted end to end.">
 <meta property="og:title" content="Ivan Pehlivanov | Software Engineer">
-<meta property="og:description" content="Data-heavy web products in production: four live sites with their own ingestion pipelines, plus freelance and internship work in Belgium.">
+<meta property="og:description" content="Data-heavy web products in production: four live sites with their own ingestion pipelines and 297K+ clicks from Google Search, plus freelance and internship work in Belgium.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ivnpehlivanov.github.io/">
 <meta property="og:image" content="https://ivnpehlivanov.github.io/img/royaletracker-tierlist.webp">
@@ -186,9 +186,20 @@
   .asof { margin: 14px 0 0; color: var(--ink-3); font-size: 13px; }
   @media (min-width: 760px) { .metrics { grid-template-columns: repeat(4, 1fr); } }
 
+  .search { margin: 40px 0 0; padding: 28px 0 0; border-top: 1px solid var(--line); }
+  .search .label { margin: 0 0 16px; }
+  .search figure { margin: 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--line-2); background: #fff; box-shadow: 0 18px 48px rgba(0, 0, 0, 0.38); }
+  .search img { width: 100%; height: auto; }
+  .search .metrics { margin-top: 24px; padding-top: 0; border-top: 0; }
+  .search .metrics b { font-size: clamp(24px, 2.6vw, 30px); }
+  .search .metrics span { font-size: 13.5px; }
+  .search-line { margin: 12px 0 0; color: var(--ink-2); font-size: 14px; line-height: 1.5; }
+  .search-line b { color: var(--ink); font-weight: 600; }
+
   .duo { border-top: 1px solid var(--line); padding: 56px 0 0; display: grid; grid-template-columns: 1fr; gap: 48px; }
-  .duo .game figure { margin: 0 0 22px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line-2); box-shadow: 0 18px 48px rgba(0, 0, 0, 0.38); }
-  .duo .game img { width: 100%; height: auto; aspect-ratio: 1200 / 760; object-fit: cover; object-position: top; }
+  .duo .game > figure { margin: 0 0 22px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line-2); box-shadow: 0 18px 48px rgba(0, 0, 0, 0.38); }
+  .duo .game > figure img { width: 100%; height: auto; aspect-ratio: 1200 / 760; object-fit: cover; object-position: top; }
+  .duo .game .search { margin-top: 28px; }
   .duo .game h3 { font-size: 24px; margin: 0 0 8px; }
   .duo .game h3 a { color: var(--ink); }
   .duo .game h3 a:hover { color: var(--gold); text-decoration: none; }
@@ -325,10 +336,10 @@
       <div class="proof">
         <div><b>887K+</b><span>records ingested per day</span></div>
         <div><b>38M+</b><span>records stored in PostgreSQL</span></div>
-        <div><b>16.7M</b><span>user profiles indexed</span></div>
-        <div><b>4</b><span>products in production</span></div>
+        <div><b>297K+</b><span>clicks from Google Search</span></div>
+        <div><b>7.3M+</b><span>Google Search impressions</span></div>
       </div>
-      <p class="proof-note">Measured in October 2026 across RoyaleTracker and BrawlMetrics.</p>
+      <p class="proof-note">Pipeline figures measured in October 2026 on RoyaleTracker and BrawlMetrics. Search figures from Google Search Console for RoyaleTracker, BrawlMetrics and Royaledly, all time to Oct 26, 2026.</p>
     </div>
   </div>
 
@@ -381,6 +392,16 @@
           <div><b>300+</b><span>pages in the sitemap</span></div>
         </div>
         <p class="asof">Figures measured in October 2026.</p>
+        <div class="search">
+          <p class="label mono">Google Search performance &middot; Search Console, all time to Oct 26, 2026</p>
+          <figure><img src="img/gsc-royaletracker.webp" width="1596" height="525" alt="Google Search Console performance graph for royaletracker.gg: 266K clicks and 5.86M impressions, with traffic rising from July 2026" loading="lazy"></figure>
+          <div class="metrics">
+            <div><b>266K</b><span>clicks from Google</span></div>
+            <div><b>5.86M</b><span>impressions</span></div>
+            <div><b>4.5%</b><span>average click-through rate</span></div>
+            <div><b>6.6</b><span>average position</span></div>
+          </div>
+        </div>
       </article>
 
       <!-- BrawlMetrics -->
@@ -418,6 +439,16 @@
           <div><b>16.7M</b><span>user profiles indexed</span></div>
           <div><b>390+</b><span>pages in the sitemap</span></div>
         </div>
+        <div class="search">
+          <p class="label mono">Google Search performance &middot; Search Console, all time to Oct 26, 2026</p>
+          <figure><img src="img/gsc-brawlmetrics.webp" width="1573" height="515" alt="Google Search Console performance graph for brawlmetrics.gg: 17K clicks and 1.38M impressions since July 2026, still climbing" loading="lazy"></figure>
+          <div class="metrics">
+            <div><b>17K</b><span>clicks from Google</span></div>
+            <div><b>1.38M</b><span>impressions</span></div>
+            <div><b>1.2%</b><span>average click-through rate</span></div>
+            <div><b>7.8</b><span>average position</span></div>
+          </div>
+        </div>
       </article>
 
       <!-- Games -->
@@ -428,6 +459,11 @@
           <span class="live"><i></i>Live since Mar 2026</span>
           <p>Daily puzzle game in the style of Wordle, with eight modes. A seeded generator gives every player the same puzzle each day without storing answers in advance. Anonymous usage statistics use salted hashes and idempotent writes, so no personal data is kept.</p>
           <div class="chips"><span class="chip">Next.js 16</span><span class="chip">TypeScript</span><span class="chip">Tailwind</span><span class="chip">PostgreSQL</span></div>
+          <div class="search">
+            <p class="label mono">Google Search performance</p>
+            <figure><img src="img/gsc-royaledly.webp" width="1601" height="465" alt="Google Search Console performance graph for royaledly.com: 14.2K clicks and 126K impressions, with an 11.2% click-through rate" loading="lazy"></figure>
+            <p class="search-line"><b>14.2K clicks</b> &middot; <b>126K impressions</b> &middot; <b>11.2%</b> click-through rate &middot; average position <b>5.3</b>. Search Console, all time to Oct 26, 2026.</p>
+          </div>
         </article>
         <article class="game">
           <figure><img src="img/brawldly.webp" width="1200" height="750" alt="Brawldly game selection screen" loading="lazy"></figure>
